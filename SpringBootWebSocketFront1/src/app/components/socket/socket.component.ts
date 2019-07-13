@@ -108,4 +108,21 @@ export class SocketComponent implements OnInit {
     }
   }
 
+  disconnect() {
+    if(this.stompClient != null) {
+      this.stompClient.disconnect();
+      this.isLoaded = false;
+      console.log("Disconnected");
+    } else {
+      console.log("You are not connected");
+    }
+  }
+
+  connect() {
+    //On initialise la connexion au Serveur
+    this.initializeWebSocketConnection();
+    this.isLoaded = true;
+    console.log("You are connected");
+  }
+
 }
